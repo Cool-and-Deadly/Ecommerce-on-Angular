@@ -58,7 +58,8 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @return array
      */
     public function getCollectionForCache(callable $infolog = null){
-        return 'getCollectionForCache';
+        $response = $this->_apiClient->get($this->getProviderUrl('products'));
+        return $response->json();
     }
 
     /**
@@ -75,7 +76,7 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      */
     public function getCategories(){
         $response = $this->_apiClient->get($this->getProviderUrl('categories'));
-        return $response->getBody();
+        return $response->json();
     }
 
 

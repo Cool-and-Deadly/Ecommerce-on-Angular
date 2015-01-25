@@ -63,7 +63,7 @@ class Products extends Command {
         $collection = $this->api->getCollectionForCache($log);
 
         // Cache the results of the collection for 30 days (43200 min).
-        Cache::put(self::PRODUCTS_CACHE_KEY, json_encode($collection), 43200);
+        Cache::put(self::PRODUCTS_CACHE_KEY, $collection, 43200);
     }
 
     /**

@@ -10,7 +10,6 @@ class CategoriesController extends BaseAPIController {
      * @param CatalogProviderInterface $prov
      */
     public function __construct(CatalogProviderInterface $prov) {
-        parent::__construct();
         $this->_catalogProvider = $prov;
     }
 
