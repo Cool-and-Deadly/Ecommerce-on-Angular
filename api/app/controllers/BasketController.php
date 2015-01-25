@@ -1,6 +1,6 @@
 <?php
 
-class BasketController extends BaseAPIController {
+class BasketController extends APICheckoutController {
 
     /**
      * @method getItems

@@ -1,13 +1,13 @@
 <?php
 
-class CategoriesController extends BaseAPIController {
+class CategoriesController extends APICatalogController {
 
     /**
      * @method getCategories
-     * @return string
+     * @return JSON
      */
     public function getCategories() {
-        return Response::json($this->api->getCategories());
+        return $this->_catalogProvider->getCategories();
     }
 
 }

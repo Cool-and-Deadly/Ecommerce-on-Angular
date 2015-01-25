@@ -1,14 +1,13 @@
 <?php
 
-class ProductController extends BaseAPIController {
+class ProductController extends APICatalogController {
 
     /**
      * @method getProduct
      * @param integer $productId
-     * @return string
+     * @return JSON
      */
     public function getProduct($productId) {
-        return Response::json($this->api->getProduct($productId));
+        return $this->_catalogProvider->getProduct($productId);
     }
-
 }

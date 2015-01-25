@@ -1,15 +1,16 @@
 {
     "socket": {
-        "port": 8888, 
-        "host": "localhost"
+        "port": 8888,
+        "host": "http://10.10.10.10/store"
     },
     "magento": {
-        "path": "/var/www/magento",
-        "host": "http://localhost/magento",
+        "host": "http://10.10.10.11",
         "store": 0
     },
     "api": {
-        "host": "http://localhost/api/public",
-        "provider": "magento"
+        "host": "http://10.10.10.10/api/public",
+        "catalogProvider": "magento",
+        "checkoutProvider": "magento",
+        "customerProvider": "magento"
     }
 }

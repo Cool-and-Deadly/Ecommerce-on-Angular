@@ -1,10 +1,13 @@
 <?php
 
-class CurrenciesController extends BaseAPIController {
+class CurrenciesController extends APICatalogController {
 
+    /**
+     * @method getCurrencies
+     * @return JSON
+     */
     public function getCurrencies() {
-        $options = $this->api->getCurrencies();
-        return Response::json($options);
+        return $this->_catalogProvider->getCurrencies();
     }
 
 }
