@@ -28,7 +28,8 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @return array
      */
     public function getProduct($productId){
-        return 'getProduct';
+        $response = $this->_apiClient->get($this->getProviderUrl('product/'.$productId));
+        return $response->json();
     }
 
     /**
