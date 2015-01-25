@@ -25,7 +25,7 @@ Route::get('/basket/remove/{id}', 'BasketController@removeItem');
 
 Route::get('/currencies', 'CurrenciesController@getCurrencies');
 
-Route::get('/account', 'AccountController@getAccount');
-Route::post('/account/login', 'AccountController@login');
-Route::get('/account/logout', 'AccountController@logout');
-Route::post('/account/register', 'AccountController@register');
+Route::get('/customer', 'AccountController@getAccount');
+Route::post('/customer/login', 'AccountController@login');
+Route::get('/customer/logout', 'AccountController@logout');
+Route::post('/customer/register', 'AccountController@register');
