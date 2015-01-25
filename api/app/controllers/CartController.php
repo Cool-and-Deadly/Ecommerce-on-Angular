@@ -1,6 +1,6 @@
 <?php
 
-class CheckoutController extends APICheckoutController {
+class CartController extends APICheckoutController {
 
     /**
      * @method getItems

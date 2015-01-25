@@ -19,13 +19,13 @@ Route::get('/categories', 'CategoriesController@getCategories');
 
 Route::get('/attributes/{name}', 'AttributesController@getOptions');
 
-Route::get('/basket', 'BasketController@getItems');
-Route::get('/basket/add/{id}/{quantity}', 'BasketController@addItem');
-Route::get('/basket/remove/{id}', 'BasketController@removeItem');
+Route::get('/cart', 'CartController@getItems');
+Route::get('/cart/add/{id}/{quantity}', 'CartController@addItem');
+Route::get('/cart/remove/{id}', 'CartController@removeItem');
 
 Route::get('/currencies', 'CurrenciesController@getCurrencies');
 
-Route::get('/customer', 'AccountController@getAccount');
-Route::post('/customer/login', 'AccountController@login');
-Route::get('/customer/logout', 'AccountController@logout');
-Route::post('/customer/register', 'AccountController@register');
+Route::get('/customer', 'CustomerController@getAccount');
+Route::post('/customer/login', 'CustomerController@login');
+Route::get('/customer/logout', 'CustomerController@logout');
+Route::post('/customer/register', 'CustomerController@register');

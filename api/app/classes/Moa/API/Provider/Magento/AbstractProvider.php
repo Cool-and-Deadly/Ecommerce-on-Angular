@@ -38,4 +38,14 @@ abstract class AbstractProvider {
         return $this->_baseUrl . $string . self::BASE_QUERY;
     }
 
+    /**
+     * Start sessions, leave empty if not needed for API provider
+     *
+     * @return void
+     */
+    public function startSession()
+    {
+
+    }
+
 }

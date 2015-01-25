@@ -114,7 +114,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Moa\Laravel\APICatalogServiceProvider',
-//		'Moa\Laravel\APICheckoutServiceProvider',
+		'Moa\Laravel\APICheckoutServiceProvider',
 //		'Moa\Laravel\APICustomerServiceProvider',
 
 	),

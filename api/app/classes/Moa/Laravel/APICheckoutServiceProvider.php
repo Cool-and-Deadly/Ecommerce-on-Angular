@@ -1,14 +1,14 @@
 <?php
-namespace Moa\Laravel; 
+namespace Moa\Laravel;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Backend store API service provider
  *
- * @author Raja Kapur <raja.kapur@gmail.com> 
+ * @author Raja Kapur <raja.kapur@gmail.com>
  */
-class APIServiceProvider extends ServiceProvider
+class APICheckoutServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -19,17 +19,16 @@ class APIServiceProvider extends ServiceProvider
 
     /**
      * Binds the API provider specified in config.json@moa.api.provider to
-     * Moa\API\Provider\ProviderInterface.
+     * Moa\API\Provider\CheckoutProviderInterface.
      *
      * @return void
      */
     public function register()
     {
-        $this->app->bind('Moa\API\Provider\ProviderInterface', function($app) {
-            $provider = $app['config']->get('moa.api.provider');
+        $this->app->bind('Moa\API\Provider\CheckoutProviderInterface', function($app) {
+            $provider = $app['config']->get('moa.api.provider.catalog');
             $config   = $app['config']->get('moa.' . $provider);
-            $class    = studly_case($provider) . 'Provider';
-            $ns_class = '\Moa\API\Provider\\' . $class;
+            $ns_class = '\Moa\API\Provider\\' . studly_case($provider) . '\CheckoutProvider';
 
             $api = new $ns_class($config);
             return $api;
