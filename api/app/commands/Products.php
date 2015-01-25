@@ -3,7 +3,7 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-use Moa\API\Provider\ProviderInterface;
+use Moa\API\Provider\CatalogProviderInterface;
 
 class Products extends Command {
 
@@ -11,7 +11,7 @@ class Products extends Command {
      * @const IMAGE_PATH
      * @type string
      */
-    const IMAGE_PATH = 'localhost';
+    const IMAGE_PATH = '10.10.10.11';
 
     /**
      * @const PRODUCTS_CACHE_KEY
@@ -33,7 +33,7 @@ class Products extends Command {
 
     /**
      * @property $api
-     * @var Moa\API\Provider\ProviderInterface
+     * @var Moa\API\Provider\CatalogProviderInterface
      */
     private $api;
 
@@ -41,7 +41,7 @@ class Products extends Command {
      * @constructor
      * @return \Products
      */
-    public function __construct(ProviderInterface $api)
+    public function __construct(CatalogProviderInterface $api)
     {
         $this->api = $api;
         parent::__construct();
