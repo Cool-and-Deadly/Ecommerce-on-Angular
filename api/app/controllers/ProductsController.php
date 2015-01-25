@@ -1,6 +1,6 @@
 <?php
 
-class ProductsController extends BaseAPIController {
+class ProductsController extends BaseController {
 
     /**
      * @const PRODUCTS_CACHE_KEY

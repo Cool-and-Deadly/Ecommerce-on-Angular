@@ -1,17 +1,6 @@
 <?php
 
-use Moa\API\Provider\CatalogProviderInterface;
-
-class CategoriesController extends BaseAPIController {
-
-    protected $catalogProvider;
-
-    /**
-     * @param CatalogProviderInterface $prov
-     */
-    public function __construct(CatalogProviderInterface $prov) {
-        $this->_catalogProvider = $prov;
-    }
+class CategoriesController extends APICatalogController {
 
     /**
      * @method getCategories

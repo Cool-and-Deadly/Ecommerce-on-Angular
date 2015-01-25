@@ -68,7 +68,8 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @return array
      */
     public function getCurrencies(){
-        return 'getCurrencies';
+        $response = $this->_apiClient->get($this->getProviderUrl('currencies'));
+        return $response->json();
     }
 
     /**
