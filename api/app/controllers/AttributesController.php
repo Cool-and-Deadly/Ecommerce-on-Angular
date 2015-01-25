@@ -1,6 +1,6 @@
 <?php
 
-class AttributesController extends BaseAPIController {
+class AttributesController extends APICatalogController {
 
     /**
      * @const PROCESS_COUNTS

@@ -1,6 +1,6 @@
 <?php
 
-class AccountController extends BaseAPIController {
+class AccountController extends APICustomerController {
 
     public function login() {
 
