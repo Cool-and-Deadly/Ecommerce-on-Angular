@@ -48,9 +48,11 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @param  string $attributeName
      * @param  bool $processCounts
      * @return array
+     * @TODO $processCounts not being used
      */
     public function getProductOptions($attributeName, $processCounts){
-        return 'getProductOptions';
+        $response = $this->_apiClient->get($this->getProviderUrl('attributes/'.$attributeName));
+        return $response->json();
     }
 
     /**

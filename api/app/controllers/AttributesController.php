@@ -12,11 +12,11 @@ class AttributesController extends APICatalogController {
     /**
      * @method getOptions
      * @param  string $attributeName
-     * @return string
+     * @return JSON
      */
     public function getOptions($attributeName) {
-        $response = $this->api->getProductOptions($attributeName, self::PROCESS_COUNTS);
-        return Response::json($response);
+        $response = $this->_catalogProvider->getProductOptions($attributeName, self::PROCESS_COUNTS);
+        return $response;
     }
 
 }
