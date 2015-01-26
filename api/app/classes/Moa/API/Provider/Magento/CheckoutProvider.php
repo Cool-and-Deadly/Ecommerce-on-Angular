@@ -26,12 +26,13 @@ class CheckoutProvider extends AbstractProvider implements CheckoutProviderInter
 
     /**
      * @method removeCartItem
-     * @param int $id
+     * @param int $productId
      * @return array
      */
-    public function removeCartItem($id)
+    public function removeCartItem($productId)
     {
-
+        $response = $this->_apiClient->get($this->getProviderUrl('cart/remove/'.$productId));
+        return $response->json();
     }
 
     /**

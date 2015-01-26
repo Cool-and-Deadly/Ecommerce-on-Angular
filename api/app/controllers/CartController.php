@@ -7,7 +7,7 @@ class CartController extends APICheckoutController {
      * @return string
      */
     public function getItems() {
-        return Response::json($this->api->getCartItems());
+        return $this->_checkoutProvider->getCartItems();
     }
 
     /**
@@ -17,7 +17,7 @@ class CartController extends APICheckoutController {
      * @return string
      */
     public function addItem($productId, $quantity) {
-        return Response::json($this->api->addCartItem($productId, $quantity));
+        return $this->_checkoutProvider->addCartItem($productId, $quantity);
     }
 
     /**
@@ -26,7 +26,7 @@ class CartController extends APICheckoutController {
      * @return string
      */
     public function removeItem($id) {
-        return Response::json($this->api->removeCartItem($id));
+        return $this->_checkoutProvider->removeCartItem($id);
     }
 
 }
