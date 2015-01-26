@@ -9,7 +9,7 @@ use Moa\API\Provider\CheckoutProviderInterface;
  * @author Raja Kapur <raja.kapur@gmail.com>
  * @author Adam Timberlake <adam.timberlake@gmail.com>
  */
-class CheckoutProvider extends AbstractProvider implements CheckoutProviderInterface {
+class CheckoutProvider extends AbstractProvider implements CheckoutProviderInterface  {
 
 
     /**
@@ -20,7 +20,8 @@ class CheckoutProvider extends AbstractProvider implements CheckoutProviderInter
      */
     public function addCartItem($productId, $quantity)
     {
-
+        $response = $this->_apiClient->get($this->getProviderUrl('cart/add/'.$productId.'/'.$quantity));
+        return $response->json();
     }
 
     /**
@@ -39,7 +40,8 @@ class CheckoutProvider extends AbstractProvider implements CheckoutProviderInter
      */
     public function getCartItems()
     {
-
+        $response = $this->_apiClient->get($this->getProviderUrl('cart'));
+        return $response->json();
     }
 
 

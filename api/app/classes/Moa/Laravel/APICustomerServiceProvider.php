@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
  *
  * @author Raja Kapur <raja.kapur@gmail.com>
  */
-class APICheckoutServiceProvider extends ServiceProvider
+class APICustomerServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -19,16 +19,16 @@ class APICheckoutServiceProvider extends ServiceProvider
 
     /**
      * Binds the API provider specified in config.json@moa.api.provider to
-     * Moa\API\Provider\CheckoutProviderInterface.
+     * Moa\API\Provider\CustomerProviderInterface.
      *
      * @return void
      */
     public function register()
     {
-        $this->app->bind('Moa\API\Provider\CheckoutProviderInterface', function($app) {
-            $provider = $app['config']->get('moa.api.provider.checkout');
+        $this->app->bind('Moa\API\Provider\CustomerProviderInterface', function($app) {
+            $provider = $app['config']->get('moa.api.provider.customer');
             $config   = $app['config']->get('moa.' . $provider);
-            $ns_class = '\Moa\API\Provider\\' . studly_case($provider) . '\CheckoutProvider';
+            $ns_class = '\Moa\API\Provider\\' . studly_case($provider) . '\CustomerProvider';
 
             $api = new $ns_class($config);
             return $api;
