@@ -28,7 +28,7 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @return array
      */
     public function getProduct($productId){
-        $response = $this->_apiClient->get($this->getProviderUrl('product/'.$productId));
+        $response = $this->_apiClient->get( self::MAGE_ROUTE . '/product/'.$productId );
         return $response->json();
     }
 
@@ -51,7 +51,7 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @TODO $processCounts not being used
      */
     public function getProductOptions($attributeName, $processCounts){
-        $response = $this->_apiClient->get($this->getProviderUrl('attributes/'.$attributeName));
+        $response = $this->_apiClient->get( self::MAGE_ROUTE . '/attributes/'.$attributeName );
         return $response->json();
     }
 
@@ -61,7 +61,7 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @return array
      */
     public function getCollectionForCache(callable $infolog = null){
-        $response = $this->_apiClient->get($this->getProviderUrl('products'));
+        $response = $this->_apiClient->get( self::MAGE_ROUTE . '/products' );
         return $response->json();
     }
 
@@ -70,7 +70,7 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @return array
      */
     public function getCurrencies(){
-        $response = $this->_apiClient->get($this->getProviderUrl('currencies'));
+        $response = $this->_apiClient->get( self::MAGE_ROUTE . '/currencies' );
         return $response->json();
     }
 
@@ -79,7 +79,7 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @return array
      */
     public function getCategories(){
-        $response = $this->_apiClient->get($this->getProviderUrl('categories'));
+        $response = $this->_apiClient->get( self::MAGE_ROUTE . '/categories' );
         return $response->json();
     }
 

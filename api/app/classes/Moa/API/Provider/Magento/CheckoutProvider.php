@@ -20,7 +20,7 @@ class CheckoutProvider extends AbstractProvider implements CheckoutProviderInter
      */
     public function addCartItem($productId, $quantity)
     {
-        $response = $this->_apiClient->get($this->getProviderUrl('cart/add/'.$productId.'/'.$quantity));
+        $response = $this->_apiClient->get( self::MAGE_ROUTE . '/cart/add/'.$productId.'/'.$quantity );
         return $response->json();
     }
 
@@ -31,7 +31,7 @@ class CheckoutProvider extends AbstractProvider implements CheckoutProviderInter
      */
     public function removeCartItem($productId)
     {
-        $response = $this->_apiClient->get($this->getProviderUrl('cart/remove/'.$productId));
+        $response = $this->_apiClient->get( self::MAGE_ROUTE . '/cart/remove/'.$productId );
         return $response->json();
     }
 
@@ -41,7 +41,7 @@ class CheckoutProvider extends AbstractProvider implements CheckoutProviderInter
      */
     public function getCartItems()
     {
-        $response = $this->_apiClient->get($this->getProviderUrl('cart'));
+        $response = $this->_apiClient->get( self::MAGE_ROUTE . '/cart' );
         return $response->json();
     }
 

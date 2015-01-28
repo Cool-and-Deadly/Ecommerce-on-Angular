@@ -11,31 +11,26 @@ use GuzzleHttp\Client;
 abstract class AbstractProvider {
 
     // Custom API Route to Eoa Magento Module
-    const MAGE_ROUTE = '/api/rest/eoarestapi/';
-    // Query string required to retrieve data
-    const BASE_QUERY = '?type=rest';
+    const MAGE_ROUTE = '/api/rest/eoarestapi';
 
     protected $_host;
     protected $_store;
-    protected $_baseUrl;
     protected $_apiClient;
 
     public function __construct($config)
     {
         $this->_host        = $config['host'];
         $this->_store       = $config['store'];
-        $this->_apiClient   = new Client();
-        $this->_baseUrl     = $this->_host . self::MAGE_ROUTE;
-    }
-
-
-    /**
-     * @param $string
-     * @return string
-     */
-    protected function getProviderUrl($string)
-    {
-        return $this->_baseUrl . $string . self::BASE_QUERY;
+        $this->_apiClient   = new Client([
+            'base_url' => $this->_host ,
+            'defaults' => [
+//                'headers' => ['Foo' => 'Bar'],
+            // query string required from Magento:
+                'query'   => ['type' => 'rest']
+//                'auth'    => ['username', 'password'],
+//                'proxy'   => 'tcp://localhost:80'
+            ]
+        ]);
     }
 
     /**
