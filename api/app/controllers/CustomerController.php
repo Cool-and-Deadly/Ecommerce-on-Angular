@@ -7,27 +7,27 @@ class CustomerController extends APICustomerController {
         $email    = Input::get('email');
         $password = Input::get('password');
 
-        return Response::json($this->api->login($email, $password));
+        return $this->_customerProvider->login($email, $password);
 
     }
 
     public function logout() {
-        return Response::json($this->api->logout());
+        return $this->_customerProvider->logout();
     }
 
-    public function register() {
-
+    public function register()
+    {
         $firstName = Input::get('firstName');
         $lastName  = Input::get('lastName');
         $email     = Input::get('email');
         $password  = Input::get('password');
 
-        return Response::json($this->api->register($firstName, $lastName, $email, $password));
-
+        return $this->_customerProvider->register($firstName, $lastName, $email, $password);
     }
 
-    public function getAccount() {
-        return Response::json($this->api->getAccount());
+    public function getAccount()
+    {
+        return $this->_customerProvider->getAccount();
     }
 
 }
