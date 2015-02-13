@@ -18,15 +18,6 @@ interface CatalogProviderInterface {
     public function getProduct($productId);
 
     /**
-     * Returns product information for child SKUs of product (colors, sizes, etc).
-     * 
-     * @method getProductVariations
-     * @param int $productId
-     * @return array
-     */
-    public function getProductVariations($productId);
-
-    /**
      * @method getProductOptions
      * @param  string $attributeName
      * @param  bool $processCounts
