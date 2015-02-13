@@ -1,5 +1,5 @@
 <?php
-namespace Moa\API\Provider\Magento;
+namespace Moa\API\Provider\Oxid;
 
 use GuzzleHttp\Client;
 
@@ -10,8 +10,8 @@ use GuzzleHttp\Client;
  */
 abstract class AbstractProvider {
 
-    // Custom API Route to Eoa Magento Module
-    const MAGE_ROUTE = '/api/rest/eoarestapi';
+    // Custom API Route to Eoa Oxid Module
+    const OXID_ROUTE = '/oxrest/eoarestapi';
 
     protected $_host;
     protected $_store;
@@ -21,11 +21,11 @@ abstract class AbstractProvider {
     {
         $this->_host        = $config['host'];
         $this->_store       = $config['store'];
-        // client with a query string required from Magento
+        // client with authorization headers required from Oxid Rest api
         $this->_apiClient   = new Client([
             'base_url' => $this->_host ,
             'defaults' => [
-                'query'   => ['type' => 'rest']
+                'headers' => ['Authorization' => 'Ox ' . base64_encode($config['user'].':'.$config['pw'])],
             ]
         ]);
     }
