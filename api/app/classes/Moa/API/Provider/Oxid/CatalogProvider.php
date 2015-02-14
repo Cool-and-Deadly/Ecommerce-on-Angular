@@ -31,7 +31,13 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @TODO $processCounts not being used
      */
     public function getProductOptions($attributeName, $processCounts){
-        $response = $this->_apiClient->get( self::OXID_ROUTE . '/attributes/'.$attributeName );
+        // special condition for manufacturers (in Oxid sample data)
+        // as they are no variants, but product attributes
+        if( $attributeName!=='manufacturer' ){
+            $response = $this->_apiClient->get( self::OXID_ROUTE . '/attributes/'.$attributeName );
+        }else{
+            $response = $this->_apiClient->get( self::OXID_ROUTE . '/manufacturers');
+        }
         return $response->json();
     }
 
