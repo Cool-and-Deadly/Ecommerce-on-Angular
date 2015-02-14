@@ -25,7 +25,10 @@ abstract class AbstractProvider {
         $this->_apiClient   = new Client([
             'base_url' => $this->_host ,
             'defaults' => [
-                'headers' => ['Authorization' => 'Ox ' . base64_encode($config['user'].':'.$config['pw'])],
+                'headers' => [
+                    'Authorization' => 'Ox ' . base64_encode($config['user'].':'.$config['pw']),
+                    'Content-Type'  => 'application/json; charset=utf-8'
+                ],
             ]
         ]);
     }
