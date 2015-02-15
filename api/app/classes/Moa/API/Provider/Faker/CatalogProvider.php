@@ -131,8 +131,8 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
             $name = implode(' ', $this->_faker->words(rand(1, 4)) );
 
             $product = array(
-                'id'            => $this->_faker->unique()->randomNumber(),
-                'sku'           => $this->_faker->unique()->md5(),
+                'id'            => $i,
+                'sku'           => $this->_faker->md5(),
                 'name'          => $name,
                 'ident'         => $this->_createIdent($name),
                 'price'         => $this->_faker->randomFloat(2, 1.00, 1500.00),
