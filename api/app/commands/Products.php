@@ -53,13 +53,14 @@ class Products extends Command {
      */
     public function fire()
     {
+        ini_set('memory_limit', '2048M');
+
         if (Cache::get(self::PRODUCTS_CACHE_KEY)) {
             return;
         }
 
         $log = array($this, 'info');
 
-        ini_set('memory_limit', '2048M');
         $collection = $this->api->getCollectionForCache($log);
 
         // Cache the results of the collection for 30 days (43200 min).
