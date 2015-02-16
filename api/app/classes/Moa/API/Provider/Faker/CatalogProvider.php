@@ -21,6 +21,9 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
     const CATEGORY_COUNT    = 10;
     const SUBCATEGORY_COUNT = 4;
 
+    const IMAGE_SMALL_URL   = 'http://lorempixel.com/185/150/technics/';
+    const IMAGE_LARGE_URL   = 'http://lorempixel.com/400/300/technics/';
+
     /**
      * Static dummy arrays for categories, and color & manufacturer attributes
      */
@@ -69,7 +72,7 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
             'colour'        => 1,
             'manufacturer'  => 8,
             'description'   => $this->_faker->text(),
-            'largeImage'    => $this->_faker->imageUrl('400', '300', 'technics'),
+            'largeImage'    => self::IMAGE_LARGE_URL . strval($productId % 10 + 1),
             'similar'       => '',
             'gallery'       => array(),
             'products'      => array(),
@@ -124,7 +127,8 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @return array
      */
     public function getCollectionForCache(callable $infolog = null){
-        $response = array();
+        $response   = array();
+        $baseImgUrl = self::IMAGE_SMALL_URL;
 
         for ($i = 0; $i < self::PRODUCTS_COUNT; $i++)
         {
@@ -132,13 +136,13 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
 
             $product = array(
                 'id'            => $i,
-                'sku'           => $this->_faker->md5(),
+                'sku'           => uniqid(),
                 'name'          => $name,
                 'ident'         => $this->_createIdent($name),
-                'price'         => $this->_faker->randomFloat(2, 1.00, 1500.00),
-                'image'         => $this->_faker->imageUrl('185', '150', 'technics') . '?' . $i,
-                'colour'        => $this->_faker->numberBetween(0, count(self::$_COLORS)),
-                'manufacturer'  => $this->_faker->numberBetween(0, count(self::$_MANUFACTURERS)),
+                'price'         => floatval(mt_rand(0, 150000) / 100),
+                'image'         => $baseImgUrl . strval($i%10+1),
+                'colour'        => mt_rand(0, count(self::$_COLORS)),
+                'manufacturer'  => mt_rand(0, count(self::$_MANUFACTURERS)),
                 'categories'    => $this->_faker->randomElements(self::$_CAT_IDS, $this->_faker->numberBetween(1, 4)),
                 'type'          => 'simple'
             );
