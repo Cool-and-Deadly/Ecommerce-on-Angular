@@ -6,13 +6,8 @@
 /.grunt
 /store/bower_components
 /node_modules
-/magento/var/cache/*
-/magento/var/session/*
-/magento/media/catalog/product/cache/*
 /api/app/storage/*
 /dump.rdb
-/magento/var/log/*
-/magento/app/etc/local.xml
 /node/newrelic_agent.log
 /newrelic_agent.log
 /store/js/services/Config.js
