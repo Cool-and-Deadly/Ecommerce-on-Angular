@@ -4,7 +4,7 @@ namespace Moa\API\Provider\Oxid;
 use Moa\API\Provider\CatalogProviderInterface;
 
 /**
- * Oxid API provider for Laravel
+ * Oxid API catalog provider for Laravel
  *
  * @author Ruzbeh Resaei <ruzbeh.resaei@gmail.com>
  */

@@ -4,10 +4,9 @@ namespace Moa\API\Provider\Magento;
 use Moa\API\Provider\CustomerProviderInterface;
 
 /**
- * Magento API provider for Laravel
+ * Magento API customer provider for Laravel
  *
- * @author Raja Kapur <raja.kapur@gmail.com>
- * @author Adam Timberlake <adam.timberlake@gmail.com>
+ * @author Ruzbeh Resaei <ruzbeh.resaei@gmail.com>
  */
 class CustomerProvider extends AbstractProvider implements CustomerProviderInterface  {
 

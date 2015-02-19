@@ -4,9 +4,9 @@ namespace Moa\Laravel;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Backend store API service provider
+ * Backend store API catalog service provider
  *
- * @author Raja Kapur <raja.kapur@gmail.com>
+ * @author Ruzbeh Resaei <ruzbeh.resaei@gmail.com>
  */
 class APICatalogServiceProvider extends ServiceProvider
 {

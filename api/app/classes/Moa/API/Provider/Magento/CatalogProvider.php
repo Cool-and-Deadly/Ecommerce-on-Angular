@@ -4,7 +4,7 @@ namespace Moa\API\Provider\Magento;
 use Moa\API\Provider\CatalogProviderInterface;
 
 /**
- * Magento API provider for Laravel
+ * Magento API catalog provider for Laravel
  *
  * @author Ruzbeh Resaei <ruzbeh.resaei@gmail.com>
  */

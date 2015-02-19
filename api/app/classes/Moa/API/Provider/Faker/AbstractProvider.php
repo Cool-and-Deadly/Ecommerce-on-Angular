@@ -5,7 +5,7 @@ use Faker;
 
 
 /**
- * Abstract API provider for Laravel
+ * Abstract provider for Laravel, which returns dummy data using the Faker library
  *
  * @author Ruzbeh Resaei <ruzbeh.resaei@gmail.com>
  */

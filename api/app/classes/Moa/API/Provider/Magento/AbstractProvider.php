@@ -4,7 +4,7 @@ namespace Moa\API\Provider\Magento;
 use GuzzleHttp\Client;
 
 /**
- * Abstract API provider for Laravel
+ * Abstract Magento API provider for Laravel
  *
  * @author Ruzbeh Resaei <ruzbeh.resaei@gmail.com>
  */

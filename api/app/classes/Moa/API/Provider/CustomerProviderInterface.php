@@ -2,9 +2,9 @@
 namespace Moa\API\Provider;
 
 /**
- * Provider Interface for Laravel
+ * Provider Customer Interface for Laravel
  *
- * @author Raja Kapur <raja.kapur@gmail.com>
+ * @author Ruzbeh Resaei <ruzbeh.resaei@gmail.com>
  */
 interface CustomerProviderInterface {
 

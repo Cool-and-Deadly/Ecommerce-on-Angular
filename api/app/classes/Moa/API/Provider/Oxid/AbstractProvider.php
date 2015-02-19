@@ -4,7 +4,7 @@ namespace Moa\API\Provider\Oxid;
 use GuzzleHttp\Client;
 
 /**
- * Abstract API provider for Laravel
+ * Abstract Oxid API provider for Laravel
  *
  * @author Ruzbeh Resaei <ruzbeh.resaei@gmail.com>
  */
