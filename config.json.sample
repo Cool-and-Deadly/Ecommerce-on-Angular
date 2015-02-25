@@ -1,16 +1,24 @@
 {
     "socket": {
         "port": 8888,
-        "host": "http://10.10.10.10/store"
+        "host": "dev.eoa.de"
     },
     "magento": {
         "host": "http://10.10.10.11",
         "store": 0
     },
+    "oxid": {
+        "host": "http://10.10.10.12",
+        "store": "baseshop",
+        "user": "admin",
+        "pw": "admin"
+    },
     "api": {
-        "host": "http://10.10.10.10/api/public",
-        "catalogProvider": "magento",
-        "checkoutProvider": "magento",
-        "customerProvider": "magento"
+        "host": "http://dev.eoa.de/api/public",
+        "provider": {
+            "catalog": "magento",
+            "checkout": "magento",
+            "customer": "magento"
+        }
     }
 }
