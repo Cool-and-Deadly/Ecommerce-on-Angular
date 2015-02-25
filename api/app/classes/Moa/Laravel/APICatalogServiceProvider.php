@@ -19,7 +19,7 @@ class APICatalogServiceProvider extends ServiceProvider
 
     /**
      * Binds the API provider specified in config.json@moa.api.provider to
-     * Moa\API\Provider\CustomerProviderInterface.
+     * Moa\API\Provider\CatalogProviderInterface.
      *
      * @return void
      */
