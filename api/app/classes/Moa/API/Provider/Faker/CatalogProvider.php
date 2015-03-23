@@ -17,7 +17,7 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
     /**
      * Size settings for product collection
      */
-    const PRODUCTS_COUNT    = 100000;  // size of product collection
+    const PRODUCTS_COUNT    = 500000;  // size of product collection
     const CATEGORY_COUNT    = 10;
     const SUBCATEGORY_COUNT = 4;
 
@@ -66,7 +66,7 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
             'sku'           => $this->_createIdent($name),
             'name'          => $name,
             'type'          => 'simple',
-            'quantity'      => $this->_faker->randomNumber(),
+            'quantity'      => 999, // random number
             'friendUrl'     => null,
             'price'         => (float) 123.45,
             'colour'        => 1,
@@ -127,12 +127,13 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
      * @return array
      */
     public function getCollectionForCache(callable $infolog = null){
+        set_time_limit(300); // adds 30 sec to the default time limit for php scripts
         $response   = array();
         $baseImgUrl = self::IMAGE_SMALL_URL;
 
         for ($i = 0; $i < self::PRODUCTS_COUNT; $i++)
         {
-            $name = implode(' ', $this->_faker->words(rand(1, 4)) );
+            $name = implode(' ', $this->_faker->words(mt_rand(1, 4)) );
 
             $product = array(
                 'id'            => $i,
@@ -143,7 +144,7 @@ class CatalogProvider extends AbstractProvider implements CatalogProviderInterfa
                 'image'         => $baseImgUrl . strval($i%10+1),
                 'colour'        => mt_rand(0, count(self::$_COLORS)),
                 'manufacturer'  => mt_rand(0, count(self::$_MANUFACTURERS)),
-                'categories'    => $this->_faker->randomElements(self::$_CAT_IDS, $this->_faker->numberBetween(1, 4)),
+                'categories'    => $this->_faker->randomElements(self::$_CAT_IDS, mt_rand(1, 4)),
                 'type'          => 'simple'
             );
 
