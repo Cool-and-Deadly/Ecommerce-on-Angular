@@ -1,99 +1,23 @@
-Moa
+Eoa (E-Commerce on Angular)
 =========
 
-<img src="https://travis-ci.org/Wildhoney/Magento-on-Angular.png" />
-
-**Note:** Those updating from 0.2.8 to 0.3.0 need to run: `composer dump-autoload` from `api/` and update the new `config.json` file.
-
-Tired of Magento's lack of unit testing? Configuration over convention? Use of Prototype.js? Badly written JavaScript? Untested third-party modules? Likewise! Moa brings Magento into the 21st century.
-
- * **0.2.8 (Latest Video)**: https://vimeo.com/86465770
- * 0.1.1: https://vimeo.com/85305300
- * 0.1.0: https://vimeo.com/85201798
-
-<img src="http://i.imgur.com/PP6l6G9.jpg" alt="Angular, Magento, Laravel" />
-
-Heapshots: Moa uses <a href="https://github.com/bnoordhuis/node-heapdump">HeapDump</a> to take memory snapshots. Send a `kill -USR2 <pid>` where `<pid>` is your Node.js process ID.
+This project is based on the Magento on Angular Project by Adam Timberlake and has been adopted and changed for the purposes of my Masterthesis with the topic "Integration of various backends into a JavaScript-based shop system". The project has been altered to function in a Microservice Architecture. For that, the backend was changed to serve as an API Gateway, which feeds the client data from remote services. For proof of concept a Magento CatalogService and an OXID CatalogService have been implemented. The services are in a private repository. Let me know if you're interested and I will send you the source code.
 
 Getting Started
 ---------
 
- * Install all dependencies: `npm install`, `bower install`;
- * Install Laravel dependencies: `composer install` from `api/`;
- * Configure a <a href="http://www.magentocommerce.com/wiki/1_-_installation_and_configuration/magento_installation_guide">new Magento store</a>, or specify the URL, and file path to your existing Magento store by editing the `config.json` file.
- * Update `config.json.sample` with your own paths, and hostnames; rename `config.json.sample` to `config.json`
- * Run `grunt`
- * (Optionally): Cache products using `php artisan products` from `api/`;
- * Initialise the Node.js instance: `node node/server.js`;
- * Open `example.com/Magento-on-Angular/store/` in your browser;
- * You may need to update the `base_url` in `Magento Admin > Configuration > Web` if you did a fresh installation of Magento.
- 
-Optionally, you may prefer to structure your config and folders in the manner described in this wiki page: https://github.com/Wildhoney/Magento-on-Angular/wiki/Preferred-Folder-Structure-and-Config 
+Have a look at the MOA project:
+https://github.com/Wildhoney/Magento-on-Angular
 
-If things are not working correctly, take a look at `api/public/attributes/color` for any Laravel/Magento issues. Please don't spend too much time debugging &ndash; <a href="https://github.com/Wildhoney/Magento-on-Angular/issues">file a bug</a>!
-
-Unit Testing
+Abstract my the thesis (in German)
 ---------
 
-All unit tests for both JavaScript and PHP can be run from the terminal: `grunt test`.
+ Die vorliegende Arbeit untersucht das Konzept, eine Microservice Architektur auf ein E-Commerce System anzuwenden und mit einer javascript-basierten Single Page Applikation auf Frontendseite zu verknüpfen. Anhand einer Machbarkeitsstudie werden Komplexitäten, Probleme und mögliche Verbesserungen einer solchen Architektur ausgearbeitet und dokumentiert. In der praktischen Umsetzung wird mit drei virtuellen Maschinen eine sachgerechte Architektur verteilter Systeme konstruiert. Es kommt ein AngularJS Frontend zum Einsatz, welches Anfragen an ein API Gateway sendet. Dieses leitet die Anfragen an die entsprechenden REST Schnittstellen der Microservices weiter. Es werden Microservices für ein Magento- sowie ein OXID-Shopsystem entwickelt. Die entworfene Architektur erlaubt den Austausch einzelner Services verschiedener Systeme. Zudem ermöglicht sie eine Erweiterung um Service-Komponenten sowie zusätzliche Backend-Systeme. Ferner demonstriert diese Arbeit ein Konzept zur deutlich effizienteren Filterung von Produktdaten im Vergleich zu einem Magento Shopsystem. Diese Arbeit offenbart außerdem Komplexitäten der Architektur. Hierzu zählen die Handhabung von Sessions sowie die Warenkorb-Logik. Auf diese wird im letzten Kapitel detailliert eingegangen und es werden verschiedene Lösungsansätze diskutiert. Die in dieser Arbeit gewonnenen Erkenntnisse, können mit dem Quellkode als Basis für die Erweiterung zu einem service-basierten E-Commerce System dienen.
 
- * Run PHPUnit tests only: `grunt php-test`
- * Run Jasmine tests only: `grunt js-test`
- * PHP specific unit tests are available with the `phpunit` command from the `/api/` directory;
- * JavaScript specific unit tests are available via the URL `/store/tests/`;
 
-Generating Products
----------
+Preamble (in German)
+----------
 
-Since your product collection might be a little slow because of Magento's EAV database structure, Moa allows you to create a cache key via the terminal instead &ndash; however a cached copy will still be generated if you access it via your browser.
+Ziel dieser Arbeit ist es, das Konzept der Microservices auf ein E-Commerce System anzuwenden und mit einer javascript-basierten Single Page Applikation auf der Frontendseite zu verbinden. Es geht nicht darum, ein vollständig funktionsfähiges Microservice E-Commerce System zu implementieren, sondern vielmehr Erfahrungen, Probleme und den Fortschritt in der Arbeit mit Microservices für eine E-Commerce Applikation zu sammeln und für eine Weiterentwicklung in diesem Bereich zu dokumentieren.
 
-In order to generate a cache for the product collection, you can run `php artisan products` from the terminal. Once completed, the normal API method via the browser will use this cache key.
-
-<img src="http://i.imgur.com/Ye2AO9J.png" alt="Redis" />
-
-Please note that by default the cache is using plain old file cache. If you want to use Redis, change the configuration on line 18 of `api/app/config/cache.php` from `file` to `redis`. More information on the cache configuration is available on http://laravel.com/docs/cache#configuration.
-
-Directory Structure
----------
-
-At first glance the directories may seem over-complicated. However there's method in all of the madness!
-
- * `api` contains the Laravel framework which interfaces with Magento;
- * `dist` contains production-ready minified JS/CSS files for Moa;
- * `node` contains Node.js server for delivering products via <a href="https://github.com/Wildhoney/Snapshot.js">Snapshot</a>;
- * `store` contains the actual Angular.js Moa application;
-
-Laravel API
----------
-
-If you prefer to use another JS framework such as Ember or Meteor, then you're more than welcome to use the API in isolation. Below we've documented <a href="https://github.com/Wildhoney/Magento-on-Angular/blob/master/api/app/routes.php">the URLs</a> and their purposes:
-
- * `/products` &ndash; fetch all the products;
- * `/product/5` &ndash; fetch a product with the ID of 5;
- * `/categories` &ndash; fetch all the categories and their sub-categories;
- * `/basket` &ndash; fetch all of the items in the basket;
- * `/basket/add/2/4` &ndash; add an item to the basket with product ID 2 and quantity 4;
- * `/basket/remove/2` &ndash; Remove an item from the basket;
- * `/attributes/color` &ndash; fetch attributes by name;
- * `/currencies` &ndash; fetch a list of currencies and their conversion rates;
- * `/account` &ndash; fetch details of currently logged in user;
- * `/account/login` &ndash; login a user;
- * `/account/logout` &ndash; logout a user;
- * `/account/register` &ndash; create a new user account;
-
-Specification
----------
-
- * Angular.js front-end for one-page functionality;
- * Laravel API for interacting with Magento;
- * Separation of concerns with API being separate from Magento installation;
- * Lazy-loaded product collection with <a href="https://github.com/Wildhoney/Snapshot.js">Snapshot.js</a>;
- * Simplified PHP back-end REST API;
- * Implement Spreedly as the payment gateway;
- * Front-end and back-end tests with >90% unit-test code coverage;
- * Abides by the rules to make it Google crawlable;
- * Socket.io (WebSockets) for instant product availability;
- * Standardised modules: Facebook Connect, Gift Wrapping, et cetera...;
- * GZipped data packages from back-end API;
- * Real-time currency converter using Google Calculator API;
- * Crossfilter for super-fast filtering across all models;
+Für die Umsetzung wird mit Magento on Angular ein vorhandenes Projekt eingesetzt und in eine Microservice Architektur umstrukturiert. Anhand unterschiedlicher Provider Schnittstellen werden die Funktionsaufrufe auf Serverseite in verschiedene Komponenten aufgeteilt, die zur Integration von systemspezifischen Provider Klassen implementiert werden. Diese leiten die Aufrufe schließlich an die entsprechenden Microservices weiter. Zunächst integriert ein Magento Shopsystem alle Provider Komponenten, anschließend wird eine Provider-Komponente mit der eines OXID Systems ausgetauscht. Dadurch wird gezeigt, dass in der neuen Architektur Komponenten und Services so gekapselt sind, dass sie zwischen verschiedenen Systemen ausgetauscht werden können.
